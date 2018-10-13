@@ -4,7 +4,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t meetarun/docker-react -f Dockerfile .
+  - docker build -t meetarun/docker-react -f Dockerfile.dev .
 
 script:
   - docker run meetarun/docker-react npm run test -- --coverage
@@ -20,7 +20,7 @@ deploy:
   on:
     branch: master
   
-  access_key_id: "AWS_ACCESS_KEY"
+  access_key_id: $AWS_ACCESS_KEY
   secret_access_key:
     secure: "$AWS_SECRET_KEY"
 
